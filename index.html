@@ -4,15 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vertex Scripts</title>
-
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23f2fffb'/%3E%3Cstop offset='45%25' stop-color='%238df0d1'/%3E%3Cstop offset='100%25' stop-color='%232ea881'/%3E%3C/linearGradient%3E%3Cfilter id='glow' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='6' result='b'/%3E%3CfeMerge%3E%3CfeMergeNode in='b'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Crect width='128' height='128' rx='28' fill='%23081412'/%3E%3Cg filter='url(%23glow)'%3E%3Cpath d='M20 22h28l16 30 16-30h28L64 108 20 22Z' fill='url(%23g)'/%3E%3C/g%3E%3Cpath d='M42 22h20l2 6-8 16-10-16-4-6Z' fill='%230b1715' opacity='.78'/%3E%3C/svg%3E" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
+      --bg-1: #07110f;
+      --bg-2: #0d1f1b;
       --primary: #46c7a0;
       --primary-2: #2ea881;
       --primary-3: #8df0d1;
@@ -22,21 +21,21 @@
       --success: #4af59a;
       --danger: #ffb8c3;
       --warn: #ffe39b;
-      --shadow: 0 28px 70px rgba(0, 0, 0, 0.42);
+      --shadow: 0 28px 70px rgba(0,0,0,0.42);
       --radius-xl: 34px;
+      --radius-lg: 24px;
       --maxw: 1220px;
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-
     body {
       margin: 0;
       font-family: "Inter", system-ui, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at 14% 10%, rgba(46, 168, 129, 0.14), transparent 20%),
-        radial-gradient(circle at 90% 70%, rgba(103, 226, 197, 0.12), transparent 28%),
+        radial-gradient(circle at 14% 10%, rgba(46,168,129,0.14), transparent 20%),
+        radial-gradient(circle at 90% 70%, rgba(103,226,197,0.12), transparent 28%),
         linear-gradient(118deg, #020717 0%, #031139 48%, #041120 100%);
       overflow-x: hidden;
       min-height: 100vh;
@@ -123,10 +122,7 @@
       font-size: 1.12rem;
     }
 
-    .brand em {
-      color: var(--primary-3);
-      font-style: italic;
-    }
+    .brand em { color: var(--primary-3); font-style: italic; }
 
     .brand-mark,
     .hero-logo {
@@ -180,10 +176,7 @@
     }
 
     .nav-links a:hover,
-    .nav-links a.active {
-      color: white;
-      background: rgba(70,199,160,0.12);
-    }
+    .nav-links a.active { color: white; background: rgba(70,199,160,0.12); }
 
     .nav-actions { display: flex; gap: 10px; }
 
@@ -274,7 +267,7 @@
     }
 
     .hero-meta {
-      margin: 16px 0 18px;
+      margin: 16px 0 30px;
       color: #89b3a8;
       text-transform: uppercase;
       letter-spacing: .3em;
@@ -282,30 +275,6 @@
       font-style: italic;
       font-weight: 800;
     }
-
-    .ticker-bar {
-      width: min(860px, 100%);
-      margin: 0 auto 24px;
-      overflow: hidden;
-      border-radius: 999px;
-      border: 1px solid rgba(70,199,160,0.14);
-      background: rgba(9,22,20,0.76);
-      box-shadow: inset 0 0 0 1px rgba(70,199,160,0.04);
-    }
-
-    .ticker-track {
-      display: flex;
-      gap: 34px;
-      width: max-content;
-      padding: 12px 22px;
-      color: #d8fff3;
-      font-size: .88rem;
-      font-weight: 800;
-      white-space: nowrap;
-      animation: tickerMove 18s linear infinite;
-    }
-
-    .ticker-track span { opacity: .92; }
 
     .hero-actions,
     .filter-row,
@@ -476,11 +445,7 @@
     }
 
     .spotlight:hover::before { opacity: 1; }
-    .card:hover {
-      transform: translateY(-6px) scale(1.01);
-      border-color: rgba(70,199,160,0.24);
-      box-shadow: 0 30px 80px rgba(0,0,0,0.48);
-    }
+    .card:hover { transform: translateY(-6px) scale(1.01); border-color: rgba(70,199,160,0.24); box-shadow: 0 30px 80px rgba(0,0,0,0.48); }
 
     .top-row {
       display: flex;
@@ -500,21 +465,6 @@
       overflow: hidden;
       flex-shrink: 0;
       object-fit: cover;
-      position: relative;
-    }
-
-    .app-icon::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.12), transparent 55%);
-      pointer-events: none;
-    }
-
-    .app-icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
     }
 
     .icon-letter {
@@ -523,7 +473,6 @@
       color: white;
       font-weight: 900;
       font-size: 1.25rem;
-      height: 100%;
     }
 
     .pill,
@@ -600,50 +549,6 @@
       border: 1px solid rgba(70,199,160,0.12);
     }
 
-    .updated-time {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin: 0 0 14px;
-      color: #aee8d8;
-      font-size: .86rem;
-      font-weight: 700;
-    }
-
-    .trust-row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin: 0 0 14px;
-    }
-
-    .trust-chip {
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(16,38,33,0.7);
-      border: 1px solid rgba(70,199,160,0.12);
-      color: #d8fff3;
-      font-size: .8rem;
-      font-weight: 800;
-    }
-
-    .modal-link {
-      width: 100%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 14px 16px;
-      margin-top: 12px;
-      border-radius: 16px;
-      border: 1px solid rgba(70,199,160,0.12);
-      background: rgba(8,22,19,0.9);
-      color: #c8fff0;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size: .82rem;
-      text-decoration: none;
-    }
-
     .card-badges-top {
       position: absolute;
       top: 18px;
@@ -698,29 +603,8 @@
 
     .social-btn-row { justify-content: center; }
 
-    .admin-modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(4,10,9,0.72);
-      backdrop-filter: blur(10px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
-      z-index: 90;
-    }
-
-    .admin-modal.show { display: flex; }
-
-    .admin-panel { display: block; }
-
-    .admin-modal-card {
-      width: min(860px, 100%);
-      max-height: min(88vh, 920px);
-      overflow: auto;
-      padding: 24px;
-      position: relative;
-    }
+    .admin-panel { display: none; margin-bottom: 54px; }
+    .admin-panel.show { display: block; }
 
     .admin-grid {
       display: grid;
@@ -792,32 +676,6 @@
       line-height: 1.6;
     }
 
-    .admin-pin-row {
-      display: grid;
-      gap: 12px;
-      margin-bottom: 14px;
-    }
-
-    .admin-loading {
-      display: none;
-      align-items: center;
-      gap: 12px;
-      margin-top: 8px;
-      color: #c8efe3;
-      font-weight: 700;
-    }
-
-    .admin-loading.show { display: inline-flex; }
-
-    .spinner {
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      border: 2px solid rgba(141,240,209,0.22);
-      border-top-color: #8df0d1;
-      animation: spin .8s linear infinite;
-    }
-
     .footer-brand {
       padding: 28px 30px;
       text-align: center;
@@ -866,10 +724,7 @@
       line-height: 1.45;
     }
 
-    .live-feed-item.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .live-feed-item.show { opacity: 1; transform: translateY(0); }
 
     .delta-indicator {
       display: inline-flex;
@@ -905,10 +760,7 @@
       z-index: 60;
     }
 
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
     .toast-badge {
       width: 42px;
@@ -930,11 +782,7 @@
       z-index: 40;
     }
 
-    .back-top.show {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
+    .back-top.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
 
     .reveal {
       opacity: 0;
@@ -942,11 +790,7 @@
       transition: opacity .7s ease, transform .7s ease;
     }
 
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
+    .reveal.visible { opacity: 1; transform: translateY(0); }
     .hidden { display: none !important; }
 
     .modal {
@@ -978,7 +822,6 @@
       background: rgba(12,28,24,0.92);
       color: white;
       cursor: pointer;
-      z-index: 8;
     }
 
     @keyframes logoPulse {
@@ -991,33 +834,15 @@
       100% { filter: drop-shadow(0 0 16px rgba(141,240,209,0.55)); }
     }
 
-    @keyframes tickerMove {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    @keyframes pageEnter {
-      0% { opacity: 0; transform: translateY(12px) scale(.99); }
-      100% { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
     @media (prefers-reduced-motion: reduce) {
       .logo-svg,
-      .hero-subtitle,
-      .spinner,
-      .ticker-track { animation: none; }
+      .hero-subtitle { animation: none; }
     }
 
     @media (max-width: 900px) {
       .cards-2,
       .socials-grid,
-      .admin-grid {
-        grid-template-columns: 1fr !important;
-      }
+      .admin-grid { grid-template-columns: 1fr !important; }
     }
 
     @media (max-width: 860px) {
@@ -1057,7 +882,7 @@
     <nav class="navbar glass">
       <a href="#home" class="brand">
         <div class="brand-mark">
-          <svg class="logo-svg" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" aria-label="Vertex logo">
+          <svg class="logo-svg" viewBox="0 0 128 128" aria-label="Vertex logo" role="img" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="vertexBossNav" x1="18" y1="14" x2="108" y2="112" gradientUnits="userSpaceOnUse">
                 <stop offset="0%" stop-color="#f2fffb"/>
@@ -1070,9 +895,7 @@
               </filter>
             </defs>
             <rect width="128" height="128" rx="28" fill="#081412"/>
-            <g filter="url(#vertexBossGlowNav)">
-              <path d="M20 22h28l16 30 16-30h28L64 108 20 22Z" fill="url(#vertexBossNav)"/>
-            </g>
+            <g filter="url(#vertexBossGlowNav)"><path d="M20 22h28l16 30 16-30h28L64 108 20 22Z" fill="url(#vertexBossNav)"/></g>
             <path d="M42 22h20l2 6-8 16-10-16-4-6Z" fill="#0b1715" opacity=".78"/>
           </svg>
         </div>
@@ -1084,6 +907,7 @@
         <a href="#latest-scripts">Scripts</a>
         <a href="#executors">Executors</a>
         <a href="#socials">Socials</a>
+        <a href="#admin-panel">Admin</a>
       </div>
 
       <div class="nav-actions">
@@ -1097,7 +921,7 @@
   <header class="hero wrap reveal" id="home">
     <div class="hero-card glass">
       <div class="hero-logo">
-        <svg class="logo-svg" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" aria-label="Vertex logo">
+        <svg class="logo-svg" viewBox="0 0 128 128" aria-label="Vertex logo" role="img" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="vertexBossHero" x1="18" y1="14" x2="108" y2="112" gradientUnits="userSpaceOnUse">
               <stop offset="0%" stop-color="#f7fffd"/>
@@ -1110,32 +934,14 @@
             </filter>
           </defs>
           <rect width="128" height="128" rx="28" fill="#081412"/>
-          <g filter="url(#vertexBossGlowHero)">
-            <path d="M20 22h28l16 30 16-30h28L64 108 20 22Z" fill="url(#vertexBossHero)"/>
-          </g>
+          <g filter="url(#vertexBossGlowHero)"><path d="M20 22h28l16 30 16-30h28L64 108 20 22Z" fill="url(#vertexBossHero)"/></g>
           <path d="M42 22h20l2 6-8 16-10-16-4-6Z" fill="#0b1715" opacity=".78"/>
         </svg>
       </div>
-
       <div class="eyebrow"><span class="dot"></span> Clean • Fast • Premium Script Hub</div>
       <h1 class="hero-title">VERTEX <span class="accent">SCRIPTS</span></h1>
       <p class="hero-subtitle">Working &amp; Tested Scripts 🌟</p>
       <div class="hero-meta">Clean • Modern • Responsive • Script Library</div>
-
-      <div class="ticker-bar">
-        <div class="ticker-track">
-          <span>🛠️ MM2 Script Fixed</span>
-          <span>⭐ Adopt Me Script Updated</span>
-          <span>🔥 Blade Ball Trending</span>
-          <span>🚧 PS99 In Development</span>
-          <span>⚡ Steal A Brainrot Active</span>
-          <span>🛠️ MM2 Script Fixed</span>
-          <span>⭐ Adopt Me Script Updated</span>
-          <span>🔥 Blade Ball Trending</span>
-          <span>🚧 PS99 In Development</span>
-          <span>⚡ Steal A Brainrot Active</span>
-        </div>
-      </div>
 
       <div class="hero-actions">
         <a href="#latest-scripts" class="hero-cta">Browse Scripts</a>
@@ -1169,19 +975,11 @@
         <div class="line"></div>
       </div>
 
-      <div class="grid cards-2">
-        <article class="card glass spotlight searchable"
-          data-name="mm2 script murder mystery 2"
-          data-category="script"
-          data-title="MM2 Script"
-          data-detail="loadstring(game:HttpGet('https://raw.githubusercontent.com/rysscripts/mm2/refs/heads/main/loader.lua'))()"
-          data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/rysscripts/mm2/refs/heads/main/loader.lua'))()">
+      <div class="grid cards-2" id="releaseGrid">
+        <article class="card glass spotlight searchable" data-name="mm2 script murder mystery 2" data-category="script" data-title="MM2 Script" data-detail="loadstring(game:HttpGet('https://raw.githubusercontent.com/rysscripts/mm2/refs/heads/main/loader.lua'))()" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/rysscripts/mm2/refs/heads/main/loader.lua'))()">
           <div class="card-badges-top"><span class="micro-badge">NEW</span><span class="micro-badge trending">TRENDING</span></div>
           <div class="top-row">
-            <div class="app-icon">
-              <!-- replace with your real image -->
-              <img src="images/mm2.png" alt="MM2 Script" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=&quot;icon-letter&quot;>MM</div>';">
-            </div>
+            <div class="app-icon icon-letter">MM</div>
             <span class="pill">MM2</span>
           </div>
           <div class="status"><span class="dot"></span> Working</div>
@@ -1191,7 +989,6 @@
             <span class="badge">Verified</span>
             <span class="badge">Updated Today</span>
           </div>
-          <div class="updated-time">⏱️ Updated 2 hours ago</div>
           <div class="script-meta"><span>👁️ 1.8K views</span><span>⭐ 4.9 rating</span></div>
           <div class="code">loadstring(game:HttpGet('https://raw.githubusercontent.com/rysscripts/mm2/refs/heads/main/loader.lua'))()</div>
           <div class="btn-row">
@@ -1200,17 +997,10 @@
           </div>
         </article>
 
-        <article class="card glass spotlight searchable"
-          data-name="adopt me script adopt me"
-          data-category="script"
-          data-title="Adopt Me Script"
-          data-detail="loadstring(game:HttpGet('https://raw.githubusercontent.com/rysscripts/adoptme/refs/heads/main/loader.lua'))()"
-          data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/rysscripts/adoptme/refs/heads/main/loader.lua'))()">
+        <article class="card glass spotlight searchable" data-name="adopt me script adopt me" data-category="script" data-title="Adopt Me Script" data-detail="loadstring(game:HttpGet('https://raw.githubusercontent.com/rysscripts/adoptme/refs/heads/main/loader.lua'))()" data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/rysscripts/adoptme/refs/heads/main/loader.lua'))()">
           <div class="card-badges-top"><span class="micro-badge">NEW</span><span class="micro-badge trending">TRENDING</span></div>
           <div class="top-row">
-            <div class="app-icon">
-              <img src="images/adoptme.png" alt="Adopt Me Script" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=&quot;icon-letter&quot;>AM</div>';">
-            </div>
+            <div class="app-icon icon-letter">AM</div>
             <span class="pill">ADM</span>
           </div>
           <div class="status"><span class="dot"></span> Working</div>
@@ -1220,7 +1010,6 @@
             <span class="badge">Popular</span>
             <span class="badge">Updated Today</span>
           </div>
-          <div class="updated-time">⏱️ Updated today</div>
           <div class="script-meta"><span>👁️ 2.3K views</span><span>⭐ 4.8 rating</span></div>
           <div class="code">loadstring(game:HttpGet('https://raw.githubusercontent.com/rysscripts/adoptme/refs/heads/main/loader.lua'))()</div>
           <div class="btn-row">
@@ -1229,17 +1018,10 @@
           </div>
         </article>
 
-        <article class="card glass spotlight searchable"
-          data-name="pet simulator 99 script in development"
-          data-category="script"
-          data-title="Pet Simulator 99 Script"
-          data-detail="Pet Simulator 99 Script is currently in development. No public loader yet."
-          data-copy="Pet Simulator 99 Script is currently in development.">
+        <article class="card glass spotlight searchable" data-name="pet simulator 99 script in development" data-category="script" data-title="Pet Simulator 99 Script" data-detail="Pet Simulator 99 Script is currently in development. No public loader yet." data-copy="Pet Simulator 99 Script is currently in development.">
           <div class="card-badges-top"><span class="micro-badge">NEW</span><span class="micro-badge trending">TRENDING</span></div>
           <div class="top-row">
-            <div class="app-icon">
-              <img src="images/ps99.png" alt="Pet Simulator 99 Script" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=&quot;icon-letter&quot;>P9</div>';">
-            </div>
+            <div class="app-icon icon-letter">P9</div>
             <span class="pill">PS99</span>
           </div>
           <div class="status"><span class="dot"></span> In Development 🛠️</div>
@@ -1248,7 +1030,6 @@
             <span class="badge dev">In Development 🛠️</span>
             <span class="badge">Soon</span>
           </div>
-          <div class="updated-time">⏱️ Updated recently</div>
           <div class="script-meta"><span>👁️ 0.7K views</span><span>⭐ 4.6 hype</span></div>
           <div class="code">Pet Simulator 99 Script is currently in development.</div>
           <div class="btn-row">
@@ -1257,17 +1038,10 @@
           </div>
         </article>
 
-        <article class="card glass spotlight searchable"
-          data-name="steal a brainrot script"
-          data-category="script"
-          data-title="Steal A Brainrot Script"
-          data-detail="https://pastefy.app/PeXTBlNh/raw"
-          data-copy="https://pastefy.app/PeXTBlNh/raw">
+        <article class="card glass spotlight searchable" data-name="steal a brainrot script" data-category="script" data-title="Steal A Brainrot Script" data-detail="https://pastefy.app/PeXTBlNh/raw" data-copy="https://pastefy.app/PeXTBlNh/raw">
           <div class="card-badges-top"><span class="micro-badge">NEW</span><span class="micro-badge trending">TRENDING</span></div>
           <div class="top-row">
-            <div class="app-icon">
-              <img src="images/brainrot.png" alt="Steal A Brainrot Script" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=&quot;icon-letter&quot;>SB</div>';">
-            </div>
+            <div class="app-icon icon-letter">SB</div>
             <span class="pill">SAB</span>
           </div>
           <div class="status"><span class="dot"></span> Working</div>
@@ -1277,7 +1051,6 @@
             <span class="badge">Verified</span>
             <span class="badge">Updated Today</span>
           </div>
-          <div class="updated-time">⏱️ Updated today</div>
           <div class="script-meta"><span>👁️ 1.1K views</span><span>⭐ 4.7 rating</span></div>
           <div class="code">https://pastefy.app/PeXTBlNh/raw</div>
           <div class="btn-row">
@@ -1286,17 +1059,10 @@
           </div>
         </article>
 
-        <article class="card glass spotlight searchable"
-          data-name="blade ball script"
-          data-category="script"
-          data-title="Blade Ball Script"
-          data-detail="loadstring(game:HttpGet('https://pastefy.app/6Mzmod71/raw'))()"
-          data-copy="loadstring(game:HttpGet('https://pastefy.app/6Mzmod71/raw'))()">
+        <article class="card glass spotlight searchable" data-name="blade ball script" data-category="script" data-title="Blade Ball Script" data-detail="loadstring(game:HttpGet('https://pastefy.app/6Mzmod71/raw'))()" data-copy="loadstring(game:HttpGet('https://pastefy.app/6Mzmod71/raw'))()">
           <div class="card-badges-top"><span class="micro-badge">NEW</span><span class="micro-badge trending">TRENDING</span></div>
           <div class="top-row">
-            <div class="app-icon">
-              <img src="images/bladeball.png" alt="Blade Ball Script" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=&quot;icon-letter&quot;>BB</div>';">
-            </div>
+            <div class="app-icon icon-letter">BB</div>
             <span class="pill">BB</span>
           </div>
           <div class="status"><span class="dot"></span> Working</div>
@@ -1306,7 +1072,6 @@
             <span class="badge">Verified</span>
             <span class="badge">Updated Today</span>
           </div>
-          <div class="updated-time">⏱️ Updated 1 hour ago</div>
           <div class="script-meta"><span>👁️ 1.5K views</span><span>⭐ 4.8 rating</span></div>
           <div class="code">loadstring(game:HttpGet('https://pastefy.app/6Mzmod71/raw'))()</div>
           <div class="btn-row">
@@ -1324,16 +1089,10 @@
       </div>
 
       <div class="grid cards-2">
-        <article class="card glass spotlight searchable"
-          data-name="delta mobile executor android mobile"
-          data-category="executor"
-          data-title="DELTA MOBILE"
-          data-detail="https://deltaexploits.gg/">
+        <article class="card glass spotlight searchable" data-name="delta mobile executor android mobile" data-category="executor" data-title="DELTA MOBILE" data-detail="Mobile-focused executor card. Replace the button link with your own URL.">
           <div class="card-badges-top"><span class="micro-badge">NEW</span><span class="micro-badge trending">TRENDING</span></div>
           <div class="top-row">
-            <div class="app-icon">
-              <img src="images/delta.png" alt="Delta Mobile" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=&quot;icon-letter&quot;>D</div>';">
-            </div>
+            <div class="app-icon icon-letter">D</div>
             <span class="pill">DELTA</span>
           </div>
           <div class="status undetected"><span class="dot"></span> Undetected</div>
@@ -1343,30 +1102,18 @@
             <span class="badge">Verified</span>
             <span class="badge">Fast</span>
           </div>
-          <div class="updated-time">⏱️ Updated today</div>
-          <div class="trust-row">
-            <span class="trust-chip">✔ Verified</span>
-            <span class="trust-chip">🛡️ Safe</span>
-            <span class="trust-chip">⚡ Fast Injection</span>
-          </div>
           <div class="script-meta"><span>👁️ 2.6K views</span><span>🟢 Undetected</span></div>
-          <div class="code">https://deltaexploits.gg/</div>
+          <div class="code">Add your own download link here</div>
           <div class="btn-row">
-            <a class="btn external-link" href="https://deltaexploits.gg/" target="_blank" rel="noopener noreferrer">Download Now</a>
+            <a class="btn" href="#">Add Link</a>
             <button class="btn secondary open-modal">Quick View</button>
           </div>
         </article>
 
-        <article class="card glass spotlight searchable"
-          data-name="delta ios executor ios mobile"
-          data-category="executor"
-          data-title="DELTA IOS"
-          data-detail="https://deltaexploits.gg/">
+        <article class="card glass spotlight searchable" data-name="delta ios executor ios mobile" data-category="executor" data-title="DELTA IOS" data-detail="iOS-focused executor card. Replace the button link with your own URL.">
           <div class="card-badges-top"><span class="micro-badge">NEW</span><span class="micro-badge trending">TRENDING</span></div>
           <div class="top-row">
-            <div class="app-icon">
-              <img src="images/delta-ios.png" alt="Delta iOS" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=&quot;icon-letter&quot;>DI</div>';">
-            </div>
+            <div class="app-icon icon-letter">D</div>
             <span class="pill">DELTA IOS</span>
           </div>
           <div class="status testing"><span class="dot"></span> Testing</div>
@@ -1376,30 +1123,18 @@
             <span class="badge">Mobile</span>
             <span class="badge">Smooth</span>
           </div>
-          <div class="updated-time">⏱️ Updated today</div>
-          <div class="trust-row">
-            <span class="trust-chip">✔ Verified</span>
-            <span class="trust-chip">🛡️ Safe</span>
-            <span class="trust-chip">⚡ Smooth UI</span>
-          </div>
           <div class="script-meta"><span>👁️ 2.1K views</span><span>🟡 Testing</span></div>
-          <div class="code">https://deltaexploits.gg/</div>
+          <div class="code">Add your own download link here</div>
           <div class="btn-row">
-            <a class="btn external-link" href="https://deltaexploits.gg/" target="_blank" rel="noopener noreferrer">Download Now</a>
+            <a class="btn" href="#">Add Link</a>
             <button class="btn secondary open-modal">Quick View</button>
           </div>
         </article>
 
-        <article class="card glass spotlight searchable"
-          data-name="solara executor windows"
-          data-category="executor"
-          data-title="SOLARA Executor"
-          data-detail="https://getsolara.dev/">
+        <article class="card glass spotlight searchable" data-name="solara executor windows" data-category="executor" data-title="SOLARA Executor" data-detail="Windows executor card. Replace the button link with your own URL.">
           <div class="card-badges-top"><span class="micro-badge">NEW</span><span class="micro-badge trending">TRENDING</span></div>
           <div class="top-row">
-            <div class="app-icon">
-              <img src="images/solara.png" alt="Solara Executor" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=&quot;icon-letter&quot;>S</div>';">
-            </div>
+            <div class="app-icon icon-letter">S</div>
             <span class="pill">SOLARA</span>
           </div>
           <div class="status undetected"><span class="dot"></span> Undetected</div>
@@ -1409,16 +1144,10 @@
             <span class="badge">Verified</span>
             <span class="badge">Stable</span>
           </div>
-          <div class="updated-time">⏱️ Updated today</div>
-          <div class="trust-row">
-            <span class="trust-chip">✔ Verified</span>
-            <span class="trust-chip">🛡️ Stable</span>
-            <span class="trust-chip">⚡ Windows Ready</span>
-          </div>
           <div class="script-meta"><span>👁️ 1.9K views</span><span>🟢 Undetected</span></div>
-          <div class="code">https://getsolara.dev/</div>
+          <div class="code">Add your own download link here</div>
           <div class="btn-row">
-            <a class="btn external-link" href="https://getsolara.dev/" target="_blank" rel="noopener noreferrer">Download Now</a>
+            <a class="btn" href="#">Add Link</a>
             <button class="btn secondary open-modal">Quick View</button>
           </div>
         </article>
@@ -1438,9 +1167,7 @@
           </div>
           <h3 style="margin-bottom:8px;">YouTube</h3>
           <p class="muted" style="margin:0 0 24px;">Latest showcases</p>
-          <div class="social-btn-row">
-            <a class="btn external-link" href="https://www.youtube.com/@kjcscripts" target="_blank" rel="noopener noreferrer">Subscribe</a>
-          </div>
+          <div class="social-btn-row"><a class="btn" href="#">Subscribe</a></div>
         </article>
 
         <article class="card glass spotlight social-card">
@@ -1449,64 +1176,49 @@
           </div>
           <h3 style="margin-bottom:8px;">TikTok</h3>
           <p class="muted" style="margin:0 0 24px;">Clips &amp; Shorts</p>
-          <div class="social-btn-row">
-            <a class="btn external-link" href="https://www.tiktok.com/@xvzupss" target="_blank" rel="noopener noreferrer">Follow Me</a>
-          </div>
+          <div class="social-btn-row"><a class="btn" href="#">Follow Me</a></div>
         </article>
       </div>
     </section>
+
+    <section class="reveal admin-panel" id="admin-panel">
+      <div class="section-head">
+        <h2><span style="color: var(--primary-3);">Owner</span> Dashboard</h2>
+        <div class="line"></div>
+      </div>
+
+      <div class="glass" style="padding:24px; margin-bottom:20px;">
+        <p class="admin-auth-note">Log in with your Supabase account to view real visitor stats and copy counts. This works on GitHub Pages and is already configured with your Supabase project.</p>
+        <div class="admin-form" id="adminLoginForm">
+          <input type="email" id="adminEmail" placeholder="Admin email" autocomplete="username" />
+          <input type="password" id="adminPassword" placeholder="Admin password" autocomplete="current-password" />
+          <div class="btn-row" style="justify-content:flex-start;">
+            <button class="btn" id="adminLoginSubmit">Log In</button>
+            <button class="btn secondary" id="adminLogoutBtn" style="display:none;">Log Out</button>
+          </div>
+          <div class="admin-helper" id="adminStatusText">Supabase is configured. Log in to view real stats.</div>
+        </div>
+      </div>
+
+      <div class="admin-grid">
+        <div class="admin-stat glass"><strong id="statVisitors">0</strong><span>Total visitors</span></div>
+        <div class="admin-stat glass"><strong id="statCopies">0</strong><span>Total script copies</span></div>
+        <div class="admin-stat glass"><strong id="statUnique">0</strong><span>Unique sessions</span></div>
+        <div class="admin-stat glass"><strong id="statTop">—</strong><span>Top script</span></div>
+      </div>
+
+      <div class="glass" style="padding:24px;">
+        <h3 style="margin-top:0;">Script copy breakdown</h3>
+        <div class="admin-list" id="adminBreakdown">
+          <div class="admin-row"><span>MM2 Script</span><strong>0</strong></div>
+          <div class="admin-row"><span>Adopt Me Script</span><strong>0</strong></div>
+          <div class="admin-row"><span>Steal A Brainrot Script</span><strong>0</strong></div>
+          <div class="admin-row"><span>Blade Ball Script</span><strong>0</strong></div>
+          <div class="admin-row"><span>Pet Simulator 99 Script</span><strong>0</strong></div>
+        </div>
+      </div>
+    </section>
   </main>
-
-  <div class="admin-modal" id="adminModal">
-    <div class="glass admin-modal-card">
-      <button class="close-btn" id="closeAdminModal">✕</button>
-      <section class="admin-panel" id="admin-panel">
-        <div class="section-head">
-          <h2><span style="color: var(--primary-3);">Owner</span> Dashboard</h2>
-          <div class="line"></div>
-        </div>
-
-        <div class="glass" style="padding:24px; margin-bottom:20px;">
-          <p class="admin-auth-note">
-            Log in with your Supabase account to view real visitor stats and copy counts.
-            This works on GitHub Pages and is already configured with your Supabase project.
-          </p>
-
-          <div class="admin-form">
-            <div class="admin-pin-row">
-              <input type="password" id="adminPin" placeholder="Owner PIN code" autocomplete="one-time-code" />
-            </div>
-            <input type="email" id="adminEmail" placeholder="Admin email" autocomplete="username" />
-            <input type="password" id="adminPassword" placeholder="Admin password" autocomplete="current-password" />
-            <div class="btn-row" style="justify-content:flex-start;">
-              <button class="btn" id="adminLoginSubmit">Log In</button>
-              <button class="btn secondary" id="adminLogoutBtn" style="display:none;">Log Out</button>
-            </div>
-            <div class="admin-loading" id="adminLoading"><span class="spinner"></span><span>Checking access...</span></div>
-            <div class="admin-helper" id="adminStatusText">Supabase is configured. Enter your PIN and log in to view real stats.</div>
-          </div>
-        </div>
-
-        <div class="admin-grid" id="adminGrid">
-          <div class="admin-stat glass"><strong id="statVisitors">0</strong><span>Total visitors</span></div>
-          <div class="admin-stat glass"><strong id="statCopies">0</strong><span>Total script copies</span></div>
-          <div class="admin-stat glass"><strong id="statUnique">0</strong><span>Unique sessions</span></div>
-          <div class="admin-stat glass"><strong id="statTop">—</strong><span>Top script</span></div>
-        </div>
-
-        <div class="glass" id="adminBreakdownWrap" style="padding:24px;">
-          <h3 style="margin-top:0;">Script copy breakdown</h3>
-          <div class="admin-list" id="adminBreakdown">
-            <div class="admin-row"><span>MM2 Script</span><strong>0</strong></div>
-            <div class="admin-row"><span>Adopt Me Script</span><strong>0</strong></div>
-            <div class="admin-row"><span>Steal A Brainrot Script</span><strong>0</strong></div>
-            <div class="admin-row"><span>Blade Ball Script</span><strong>0</strong></div>
-            <div class="admin-row"><span>Pet Simulator 99 Script</span><strong>0</strong></div>
-          </div>
-        </div>
-      </section>
-    </div>
-  </div>
 
   <footer class="wrap reveal" style="padding-bottom:44px;">
     <div class="glass footer-brand">
@@ -1516,7 +1228,7 @@
     </div>
   </footer>
 
-  <div class="live-feed">
+  <div class="live-feed" id="liveFeed">
     <div class="live-feed-item" id="liveFeedItem">🔥 @Masonhub copied MM2 Script</div>
   </div>
 
@@ -1533,9 +1245,6 @@
       <div class="pill" style="margin-bottom:14px;">Quick View</div>
       <h3 id="modalTitle" style="margin-top:0;">Title</h3>
       <p id="modalDetail" class="muted">Details go here.</p>
-      <a id="modalLink" class="modal-link" href="#" target="_blank" rel="noopener noreferrer" style="display:none;">
-        <span id="modalLinkText">Open link</span><span>↗</span>
-      </a>
       <div class="btn-row" style="margin-top:18px;">
         <button class="btn" id="modalCopy">Copy Script</button>
         <button class="btn secondary" id="modalDismiss">Close</button>
@@ -1552,43 +1261,31 @@
     const searchInput = document.getElementById('searchInput');
     const filters = [...document.querySelectorAll('.tag-filter')];
     const cards = [...document.querySelectorAll('.searchable')];
-
     const toast = document.getElementById('toast');
     const toastText = document.getElementById('toastText');
-
     const backTop = document.getElementById('backTop');
-
     const modal = document.getElementById('modal');
     const modalTitle = document.getElementById('modalTitle');
     const modalDetail = document.getElementById('modalDetail');
     const modalDismiss = document.getElementById('modalDismiss');
     const closeModal = document.getElementById('closeModal');
     const modalCopy = document.getElementById('modalCopy');
-    const modalLink = document.getElementById('modalLink');
-    const modalLinkText = document.getElementById('modalLinkText');
-
     const reveals = document.querySelectorAll('.reveal');
     const counters = document.querySelectorAll('.counter');
     const heroVisitorCount = document.getElementById('heroVisitorCount');
     const liveFeedItem = document.getElementById('liveFeedItem');
-
     const adminBtn = document.getElementById('adminBtn');
-    const adminModal = document.getElementById('adminModal');
-    const closeAdminModal = document.getElementById('closeAdminModal');
+    const adminPanel = document.getElementById('admin-panel');
     const adminEmail = document.getElementById('adminEmail');
     const adminPassword = document.getElementById('adminPassword');
-    const adminPin = document.getElementById('adminPin');
     const adminLoginSubmit = document.getElementById('adminLoginSubmit');
     const adminLogoutBtn = document.getElementById('adminLogoutBtn');
-    const adminLoading = document.getElementById('adminLoading');
     const adminStatusText = document.getElementById('adminStatusText');
     const statVisitors = document.getElementById('statVisitors');
     const statCopies = document.getElementById('statCopies');
     const statUnique = document.getElementById('statUnique');
     const statTop = document.getElementById('statTop');
     const adminBreakdown = document.getElementById('adminBreakdown');
-    const adminGrid = document.getElementById('adminGrid');
-    const adminBreakdownWrap = document.getElementById('adminBreakdownWrap');
 
     let activeFilter = 'all';
     let currentModalText = 'Vertex Scripts details';
@@ -1599,11 +1296,7 @@
 
     const SUPABASE_URL = 'https://nveekossobmdrejhwrdj.supabase.co';
     const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im52ZWVrb3Nzb2JtZHJlamh3cmRqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ2NDI4NzMsImV4cCI6MjA5MDIxODg3M30.KKGImnQ5WtBrjbDUkIX9OQE9tYhFaJOSxXSStUKw_sg';
-
     const SESSION_KEY = 'vertex_session_id';
-    const ADMIN_PIN = '72841';
-    const TRACK_COOLDOWN_MS = 6000;
-    const COPY_COOLDOWN_PREFIX = 'vertex_copy_cooldown_';
     const SCRIPT_NAMES = ['MM2 Script', 'Adopt Me Script', 'Steal A Brainrot Script', 'Blade Ball Script', 'Pet Simulator 99 Script'];
 
     function showToast(message) {
@@ -1631,14 +1324,6 @@
 
     async function trackEvent(type, scriptName = null) {
       if (!supabaseClient) return;
-
-      if (type === 'copy' && scriptName) {
-        const key = `${COPY_COOLDOWN_PREFIX}${scriptName}`;
-        const lastAt = Number(localStorage.getItem(key) || '0');
-        if (Date.now() - lastAt < TRACK_COOLDOWN_MS) return;
-        localStorage.setItem(key, String(Date.now()));
-      }
-
       try {
         await supabaseClient.from('site_events').insert({
           event_type: type,
@@ -1654,7 +1339,6 @@
 
     async function loadDashboardStats() {
       if (!supabaseClient) return;
-
       try {
         const { data: events, error } = await supabaseClient
           .from('site_events')
@@ -1667,11 +1351,9 @@
         const uniqueSessions = new Set(events.map(e => e.session_id).filter(Boolean)).size;
 
         const scriptCounts = {};
-        events
-          .filter(e => e.event_type === 'copy' && e.script_name)
-          .forEach(e => {
-            scriptCounts[e.script_name] = (scriptCounts[e.script_name] || 0) + 1;
-          });
+        events.filter(e => e.event_type === 'copy' && e.script_name).forEach(e => {
+          scriptCounts[e.script_name] = (scriptCounts[e.script_name] || 0) + 1;
+        });
 
         const topEntry = Object.entries(scriptCounts).sort((a, b) => b[1] - a[1])[0];
 
@@ -1690,18 +1372,13 @@
 
     async function refreshAuthState() {
       if (!supabaseClient) return;
-
       const { data } = await supabaseClient.auth.getSession();
       const loggedIn = !!data.session;
-
       adminLogoutBtn.style.display = loggedIn ? 'inline-flex' : 'none';
       adminStatusText.textContent = loggedIn
         ? 'Connected. Real stats are loading from Supabase.'
         : 'Not logged in. Use your Supabase email and password.';
-
       if (loggedIn) {
-        adminGrid.style.display = 'grid';
-        adminBreakdownWrap.style.display = 'block';
         await loadDashboardStats();
       }
     }
@@ -1722,7 +1399,6 @@
 
     function applyFilters() {
       const query = searchInput.value.trim().toLowerCase();
-
       cards.forEach(card => {
         const matchesSearch = (card.dataset.name || '').toLowerCase().includes(query);
         const matchesFilter = activeFilter === 'all' || card.dataset.category === activeFilter;
@@ -1733,7 +1409,6 @@
     function updateLiveStatus() {
       const hour = new Date().getHours();
       let change = Math.floor(Math.random() * 5) - 2;
-
       if (hour >= 18 && hour <= 23) change += Math.floor(Math.random() * 4);
       if (hour >= 2 && hour <= 6) change -= Math.floor(Math.random() * 3);
       if (Math.random() < 0.08) change += Math.floor(Math.random() * 10) + 5;
@@ -1766,19 +1441,16 @@
 
     function showLiveFeed() {
       if (!liveFeedItem) return;
-
       const messages = [
         `🔥 ${randomUsername()} copied ${randomScript()}`,
         `⭐ ${randomScript()} Updated`,
         `🛠️ ${randomScript()} Fixed`,
         `👀 ${randomUsername()} is viewing scripts`
       ];
-
       liveFeedItem.textContent = messages[Math.floor(Math.random() * messages.length)];
       liveFeedItem.classList.remove('show');
       void liveFeedItem.offsetWidth;
       liveFeedItem.classList.add('show');
-
       setTimeout(() => liveFeedItem.classList.remove('show'), 3200);
     }
 
@@ -1806,14 +1478,10 @@
         await copyText(button.dataset.copy, 'Copied successfully ✨');
         await trackEvent('copy', button.dataset.scriptName || null);
         if (supabaseClient) await loadDashboardStats();
-
         const original = button.textContent;
-        button.textContent = '✔ Copied';
-        button.style.filter = 'brightness(1.08)';
-
+        button.textContent = 'Copied ✨';
         setTimeout(() => {
           button.textContent = original;
-          button.style.filter = '';
         }, 1200);
       });
     });
@@ -1824,31 +1492,15 @@
         modalTitle.textContent = card?.dataset.title || 'Preview';
         modalDetail.textContent = card?.dataset.detail || 'Script details.';
         currentModalText = card?.dataset.copy || card?.dataset.detail || 'Script details.';
-
-        const detail = card?.dataset.detail || '';
-        const isLink = /^https?:\/\//.test(detail);
-
-        if (isLink) {
-          modalLink.href = detail;
-          modalLinkText.textContent = detail;
-          modalLink.style.display = 'inline-flex';
-        } else {
-          modalLink.style.display = 'none';
-          modalLink.href = '#';
-          modalLinkText.textContent = 'Open link';
-        }
-
         modal.style.display = 'flex';
       });
     });
 
     modalDismiss.addEventListener('click', closeModalFn);
     closeModal.addEventListener('click', closeModalFn);
-
     modal.addEventListener('click', event => {
       if (event.target === modal) closeModalFn();
     });
-
     modalCopy.addEventListener('click', () => copyText(currentModalText, 'Copied successfully ✨'));
 
     const revealObserver = new IntersectionObserver(entries => {
@@ -1856,14 +1508,12 @@
         if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.16 });
-
     reveals.forEach(el => revealObserver.observe(el));
 
     const counterObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
         const el = entry.target;
-
         if (el.id === 'heroVisitorCount') return;
 
         const target = Number(el.dataset.target || 0);
@@ -1884,12 +1534,10 @@
         counterObserver.unobserve(el);
       });
     }, { threshold: 0.4 });
-
     counters.forEach(counter => counterObserver.observe(counter));
 
     window.addEventListener('scroll', () => {
       backTop.classList.toggle('show', window.scrollY > 500);
-
       const sections = [...document.querySelectorAll('main section, header.hero')];
       const links = [...document.querySelectorAll('.nav-links a')];
       let current = 'home';
@@ -1921,46 +1569,9 @@
       }
     });
 
-    adminBtn.addEventListener('click', async () => {
-      if (!supabaseClient) {
-        showToast('Admin unavailable ⚙️');
-        return;
-      }
-
-      adminModal.classList.add('show');
-
-      const { data } = await supabaseClient.auth.getSession();
-      const loggedIn = !!data.session;
-
-      if (!loggedIn) {
-        adminGrid.style.display = 'none';
-        adminBreakdownWrap.style.display = 'none';
-        adminStatusText.textContent = 'Not logged in. Use your Supabase email and password.';
-        return;
-      }
-
-      adminGrid.style.display = 'grid';
-      adminBreakdownWrap.style.display = 'block';
-      await loadDashboardStats();
-    });
-
-    closeAdminModal.addEventListener('click', event => {
-      event.preventDefault();
-      event.stopPropagation();
-      adminModal.classList.remove('show');
-    });
-
-    adminModal.addEventListener('click', event => {
-      if (event.target === adminModal) {
-        adminModal.classList.remove('show');
-      }
-    });
-
-    document.addEventListener('keydown', event => {
-      if (event.key === 'Escape') {
-        adminModal.classList.remove('show');
-        closeModalFn();
-      }
+    adminBtn.addEventListener('click', () => {
+      adminPanel.classList.toggle('show');
+      adminPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
     adminLoginSubmit.addEventListener('click', async () => {
@@ -1968,43 +1579,17 @@
         showToast('Supabase is not connected ⚙️');
         return;
       }
-
-      const pin = adminPin.value.trim();
       const email = adminEmail.value.trim();
       const password = adminPassword.value;
-
-      if (!pin) {
-        showToast('Enter your PIN code');
-        return;
-      }
-
-      if (pin !== ADMIN_PIN) {
-        adminStatusText.textContent = 'Incorrect PIN code.';
-        showToast('Wrong PIN');
-        return;
-      }
-
       if (!email || !password) {
         showToast('Enter email and password');
         return;
       }
-
-      adminLoading.classList.add('show');
-      adminLoginSubmit.disabled = true;
-
-      await new Promise(resolve => setTimeout(resolve, 1200));
       const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
-
-      adminLoading.classList.remove('show');
-      adminLoginSubmit.disabled = false;
-
       if (error) {
         adminStatusText.textContent = `Login failed: ${error.message}`;
         return;
       }
-
-      adminGrid.style.display = 'grid';
-      adminBreakdownWrap.style.display = 'block';
       showToast('Admin login successful 👑');
       await refreshAuthState();
     });
@@ -2014,9 +1599,6 @@
       await supabaseClient.auth.signOut();
       adminStatusText.textContent = 'Logged out.';
       adminLogoutBtn.style.display = 'none';
-      adminGrid.style.display = 'none';
-      adminBreakdownWrap.style.display = 'none';
-      adminPin.value = '';
       showToast('Logged out');
     });
 
@@ -2031,7 +1613,6 @@
         const rotateX = -((event.clientY - rect.top) / rect.height - 0.5) * 8;
         card.style.transform = `translateY(-2px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
       });
-
       card.addEventListener('mouseleave', () => {
         card.style.transform = '';
       });
@@ -2043,8 +1624,6 @@
       body.style.setProperty('--mx', `${x}%`);
       body.style.setProperty('--my', `${y}%`);
     });
-
-    document.body.style.animation = 'pageEnter .55s ease';
 
     supabaseClient = initSupabase();
     if (supabaseClient) {
@@ -2067,9 +1646,7 @@
     console.assert(document.getElementById('modal') !== null, 'modal should exist');
     console.assert(document.querySelectorAll('.searchable').length >= 5, 'should have searchable cards');
     console.assert(document.getElementById('liveFeedItem') !== null, 'live feed should exist');
-    console.assert(document.getElementById('adminModal') !== null, 'admin modal should exist');
-    console.assert(document.getElementById('modalLink') !== null, 'modal link should exist');
-    console.assert(document.querySelectorAll('.external-link').length >= 5, 'external links should exist');
+    console.assert(document.getElementById('admin-panel') !== null, 'admin panel should exist');
   </script>
 </body>
 </html>
