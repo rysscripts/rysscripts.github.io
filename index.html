@@ -1606,33 +1606,14 @@
     const COPY_COOLDOWN_PREFIX = 'vertex_copy_cooldown_';
     const SCRIPT_NAMES = ['MM2 Script', 'Adopt Me Script', 'Steal A Brainrot Script', 'Blade Ball Script', 'Pet Simulator 99 Script'];
 
-   let toastTimer;
-let toastActive = false;
-
-function showToast(message) {
-  if (toastActive) return; // 🚫 prevents double trigger
-  toastActive = true;
-
-  toastText.textContent = message;
-
-  // restart animation cleanly
-  toast.classList.remove('show');
-  toast.classList.remove('hide');
-  void toast.offsetWidth;
-
-  toast.classList.add('show');
-
-  clearTimeout(toastTimer);
-
-  toastTimer = setTimeout(() => {
-    toast.classList.remove('show');
-    toast.classList.add('hide');
-
-    setTimeout(() => {
-      toastActive = false;
-    }, 300);
-  }, 1800);
-}
+    function showToast(message) {
+      toastText.textContent = message;
+      toast.classList.remove('show');
+      void toast.offsetWidth;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
+    }
 
     function getSessionId() {
       let id = localStorage.getItem(SESSION_KEY);
@@ -1725,20 +1706,19 @@ function showToast(message) {
       }
     }
 
-async function copyText(text, message = 'Copied successfully ✨') {
-  try {
-    await navigator.clipboard.writeText(text);
-  } catch {
-    const area = document.createElement('textarea');
-    area.value = text;
-    document.body.appendChild(area);
-    area.select();
-    document.execCommand('copy');
-    area.remove();
-  }
-
-  showToast(message); // ✅
-}
+    async function copyText(text, message = 'Script copied successfully ✨') {
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch {
+        const area = document.createElement('textarea');
+        area.value = text;
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+      }
+      showToast(message);
+    }
 
     function applyFilters() {
       const query = searchInput.value.trim().toLowerCase();
