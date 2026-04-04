@@ -1802,6 +1802,7 @@
     }
 
     function closeModalFn() {
+      document.getElementById("modalImage").style.display = "none";
       modal.style.display = 'none';
     }
 
@@ -1874,8 +1875,8 @@
     document.querySelectorAll('.open-modal').forEach(button => {
       button.addEventListener('click', event => {
         const card = event.currentTarget.closest('[data-title]');
-        const video = card.dataset.video;
 const image = card.dataset.image;
+const modalImage = document.getElementById("modalImage");
         modalTitle.textContent = card?.dataset.title || 'Preview';
         modalDetail.textContent = card?.dataset.detail || 'Script details.';
         currentModalText = card?.dataset.copy || card?.dataset.detail || 'Script details.';
@@ -1893,18 +1894,10 @@ const image = card.dataset.image;
           modalLinkText.textContent = 'Open link';
         }
 
-// show video or image
-if (video) {
-  document.getElementById("modalVideo").style.display = "block";
-  document.getElementById("modalVideo").src = video;
-
-  document.getElementById("modalImage").style.display = "none";
-} 
-else if (image) {
-  document.getElementById("modalImage").style.display = "block";
-  document.getElementById("modalImage").src = image;
-
-  document.getElementById("modalVideo").style.display = "none";
+// show image
+if (image) {
+  modalImage.style.display = "block";
+  modalImage.src = image;
 }
 
 modal.style.display = 'flex';
