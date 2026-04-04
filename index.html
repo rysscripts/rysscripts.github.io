@@ -1262,7 +1262,8 @@
           data-category="script"
           data-title="Adopt Me Script"
           data-detail="loadstring(game:HttpGet('https://raw.githubusercontent.com/rysscripts/adoptme/refs/heads/main/loader.lua'))()"
-          data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/rysscripts/adoptme/refs/heads/main/loader.lua'))()">
+          data-copy="loadstring(game:HttpGet('https://raw.githubusercontent.com/rysscripts/adoptme/refs/heads/main/loader.lua'))()"
+          data-image="images/adoptme.png">
           <div class="top-row">
             <div class="app-icon">
               <img src="images/adoptme.png" alt="Adopt Me Script" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=&quot;icon-letter&quot;>AM</div>';">
@@ -1290,7 +1291,8 @@
           data-category="script"
           data-title="Pet Simulator 99 Script"
           data-detail="Pet Simulator 99 Script is currently in development. No public loader yet."
-          data-copy="Pet Simulator 99 Script is currently in development.">
+          data-copy="Pet Simulator 99 Script is currently in development."
+          data-image="images/ps99.png">
           <div class="top-row">
             <div class="app-icon">
               <img src="images/ps99.png" alt="Pet Simulator 99 Script" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=&quot;icon-letter&quot;>P9</div>';">
@@ -1317,7 +1319,8 @@
           data-category="script"
           data-title="Steal A Brainrot Script"
           data-detail="https://pastefy.app/PeXTBlNh/raw"
-          data-copy="https://pastefy.app/PeXTBlNh/raw">
+          data-copy="https://pastefy.app/PeXTBlNh/raw"
+          data-image="images/sab.png">
           <div class="top-row">
             <div class="app-icon">
               <img src="images/brainrot.png" alt="Steal A Brainrot Script" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=&quot;icon-letter&quot;>SB</div>';">
@@ -1878,8 +1881,7 @@
 const image = card.dataset.image;
 const modalImage = document.getElementById("modalImage");
         modalTitle.textContent = card?.dataset.title || 'Preview';
-        modalDetail.textContent = card?.dataset.detail || 'Script details.';
-        currentModalText = card?.dataset.copy || card?.dataset.detail || 'Script details.';
+modalDetail.textContent = "Click copy to get the script.";
 
         const detail = card?.dataset.detail || '';
         const isLink = /^https?:\/\//.test(detail);
