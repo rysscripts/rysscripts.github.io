@@ -129,7 +129,7 @@
     }
 
     .brand-mark,
-    .hero-logo {
+    -logo {
       display: grid;
       place-items: center;
       background: linear-gradient(180deg, rgba(11,26,30,1), rgba(7,16,14,1));
@@ -214,7 +214,23 @@
       padding: 68px 0 78px;
     }
 
-    .hero-card { width: min(960px, 100%); padding: 48px 28px 28px; }
+    .hero-card {
+      width: min(960px, 100%);
+      padding: 48px 28px 28px;
+      position: relative;
+      overflow: hidden;
+      animation: heroFloat 6s ease-in-out infinite;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -20% -10% auto -10%;
+      height: 280px;
+      background: radial-gradient(circle at 50% 50%, rgba(70,199,160,0.12), transparent 60%);
+      pointer-events: none;
+      filter: blur(18px);
+    }
 
     .eyebrow,
     .pill,
@@ -356,9 +372,20 @@
 
     .hero-cta.ghost,
     .btn.secondary {
-      background: rgba(16,38,33,0.84);
-      border: 1px solid rgba(70,199,160,0.16);
-      box-shadow: none;
+      background: linear-gradient(180deg, rgba(10,33,29,0.96), rgba(7,26,23,0.92));
+      border: 1px solid rgba(70,199,160,0.18);
+      box-shadow:
+        inset 0 0 0 1px rgba(141,240,209,0.03),
+        0 10px 24px rgba(0,0,0,0.18);
+    }
+
+    .btn.secondary:hover {
+      border-color: rgba(141,240,209,0.28);
+      box-shadow:
+        inset 0 0 0 1px rgba(141,240,209,0.05),
+        0 14px 28px rgba(0,0,0,0.24),
+        0 0 24px rgba(70,199,160,0.08);
+      filter: brightness(1.05);
     }
 
     .searchbar {
@@ -465,23 +492,57 @@
       transform-style: preserve-3d;
     }
 
-    .spotlight::before {
+      .spotlight::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at var(--sx, 50%) var(--sy, 50%), rgba(70,199,160,0.12), transparent 34%);
+      background: radial-gradient(circle at var(--sx, 50%) var(--sy, 50%), rgba(70,199,160,0.16), transparent 34%);
       opacity: 0;
       transition: opacity .24s ease;
       pointer-events: none;
+      z-index: 0;
+    }
+
+    .spotlight::after {
+      content: "";
+      position: absolute;
+      top: -120%;
+      left: -30%;
+      width: 70%;
+      height: 240%;
+      background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255,255,255,0.04) 35%,
+        rgba(255,255,255,0.12) 50%,
+        rgba(255,255,255,0.04) 65%,
+        transparent 100%
+      );
+      transform: rotate(14deg) translateX(-120%);
+      transition: transform .7s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .spotlight:hover::after {
+      transform: rotate(14deg) translateX(240%);
+    }
+
+    .card > * {
+      position: relative;
+      z-index: 2;
     }
 
     .spotlight:hover::before { opacity: 1; }
-    .card:hover {
-      transform: translateY(-6px) scale(1.01);
-      border-color: rgba(70,199,160,0.24);
-      box-shadow: 0 30px 80px rgba(0,0,0,0.48);
+       .card:hover {
+      transform: translateY(-8px) scale(1.012);
+      border-color: rgba(141,240,209,0.28);
+      box-shadow:
+        0 30px 80px rgba(0,0,0,0.48),
+        0 0 0 1px rgba(141,240,209,0.05) inset,
+        0 0 38px rgba(70,199,160,0.10);
+      filter: brightness(1.03);
     }
-
     .top-row {
       display: flex;
       align-items: flex-start;
@@ -936,7 +997,7 @@
       transform: translateY(0);
     }
 
-    .reveal {
+     .reveal {
       opacity: 0;
       transform: translateY(24px);
       transition: opacity .7s ease, transform .7s ease;
@@ -947,18 +1008,31 @@
       transform: translateY(0);
     }
 
+    .reveal .card {
+      opacity: 0;
+      transform: translateY(24px) scale(.985);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+
+    .reveal .card.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
     .hidden { display: none !important; }
 
     .modal {
       position: fixed;
       inset: 0;
       background: rgba(4,10,9,0.68);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
       display: none;
       align-items: center;
       justify-content: center;
       padding: 18px;
       z-index: 70;
+      opacity: 0;
+      transition: opacity .22s ease;
     }
 
         .modal-card {
@@ -1102,9 +1176,14 @@
       100% { transform: translateX(-50%); }
     }
 
-    @keyframes pageEnter {
+       @keyframes pageEnter {
       0% { opacity: 0; transform: translateY(12px) scale(.99); }
       100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes heroFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
     }
 
     @keyframes spin {
@@ -1113,7 +1192,7 @@
 
     @media (prefers-reduced-motion: reduce) {
       .logo-svg,
-      .hero-subtitle,
+      -subtitle,
       .spinner,
       .ticker-track { animation: none; }
     }
@@ -1148,13 +1227,32 @@
 
     @media (max-width: 640px) {
       .wrap { width: min(var(--maxw), calc(100% - 18px)); }
-      .hero-card { padding: 32px 14px 16px; }
+      .hero-card { padding: 32px 16px 18px; }
       .hero-meta { letter-spacing: .14em; }
       .stat { width: 100%; }
       .toast { min-width: 0; width: calc(100% - 22px); }
-      .hero-cta, .btn { width: 100%; }
-      .btn-row, .social-btn-row { flex-direction: column; }
-      .card { padding: 22px; }
+      .hero-cta, .btn { width: 100%; min-height: 56px; }
+      .btn-row, .social-btn-row, .modal-actions { flex-direction: column; }
+      .card { padding: 20px; }
+      .grid { gap: 22px; }
+      .script-meta,
+      .badge-row,
+      .trust-row,
+      .filter-row,
+      .stats-row {
+        gap: 10px;
+      }
+      .searchbar input {
+        height: 62px;
+        font-size: 16px;
+      }
+      .card h3 {
+        font-size: clamp(1.8rem, 7vw, 2.6rem);
+      }
+      .app-icon {
+        width: 58px;
+        height: 58px;
+      }
     }
   </style>
 </head>
@@ -1924,19 +2022,23 @@
       }
     }
 
-    function closeModalFn() {
-      modal.style.display = 'none';
+       function closeModalFn() {
+      modal.style.opacity = '0';
 
-      modalImage.style.display = 'none';
-      modalImage.src = '';
+      setTimeout(() => {
+        modal.style.display = 'none';
 
-      modalVideo.style.display = 'none';
-      modalVideo.pause();
-      modalVideo.src = '';
+        modalImage.style.display = 'none';
+        modalImage.src = '';
 
-      modalLink.style.display = 'none';
-      modalLink.href = '#';
-      modalLinkText.textContent = 'Open link';
+        modalVideo.style.display = 'none';
+        modalVideo.pause();
+        modalVideo.src = '';
+
+        modalLink.style.display = 'none';
+        modalLink.href = '#';
+        modalLinkText.textContent = 'Open link';
+      }, 180);
     }
 
     function randomUsername() {
@@ -1979,6 +2081,17 @@
 
     searchInput.addEventListener('input', applyFilters);
 
+    searchInput.addEventListener('keydown', event => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        applyFilters();
+        const firstVisibleCard = document.querySelector('.searchable:not(.hidden)');
+        if (firstVisibleCard) {
+          firstVisibleCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+    });
+
     filters.forEach(btn => {
       btn.addEventListener('click', () => {
         filters.forEach(b => b.classList.remove('active'));
@@ -1996,12 +2109,16 @@
 
         const original = button.textContent;
         button.textContent = '✔ Copied';
-        button.style.filter = 'brightness(1.08)';
+        button.style.transform = 'scale(1.03)';
+        button.style.boxShadow = '0 0 0 1px rgba(141,240,209,0.08) inset, 0 0 26px rgba(74,245,154,0.22)';
+        button.style.filter = 'brightness(1.12) saturate(1.08)';
 
         setTimeout(() => {
           button.textContent = original;
+          button.style.transform = '';
+          button.style.boxShadow = '';
           button.style.filter = '';
-        }, 1200);
+        }, 1400);
       });
     });
 
@@ -2047,6 +2164,10 @@
         }
 
         modal.style.display = 'flex';
+        modal.style.opacity = '0';
+        requestAnimationFrame(() => {
+          modal.style.opacity = '1';
+        });
       });
     });
 
@@ -2057,11 +2178,36 @@
       if (event.target === modal) closeModalFn();
     });
 
-    modalCopy.addEventListener('click', () => copyText(currentModalText, 'Copied successfully ✨'));
+    modalCopy.addEventListener('click', async () => {
+      await copyText(currentModalText, 'Copied successfully ✨');
+
+      const original = modalCopy.textContent;
+      modalCopy.textContent = '✔ Copied';
+      modalCopy.style.transform = 'scale(1.03)';
+      modalCopy.style.boxShadow = '0 0 0 1px rgba(141,240,209,0.08) inset, 0 0 26px rgba(74,245,154,0.22)';
+      modalCopy.style.filter = 'brightness(1.12) saturate(1.08)';
+
+      setTimeout(() => {
+        modalCopy.textContent = original;
+        modalCopy.style.transform = '';
+        modalCopy.style.boxShadow = '';
+        modalCopy.style.filter = '';
+      }, 1400);
+    });
 
     const revealObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
+        if (!entry.isIntersecting) return;
+
+        entry.target.classList.add('visible');
+
+        const children = entry.target.querySelectorAll('.card');
+        children.forEach((child, index) => {
+          child.style.transitionDelay = `${index * 70}ms`;
+          requestAnimationFrame(() => {
+            child.classList.add('visible');
+          });
+        });
       });
     }, { threshold: 0.16 });
 
@@ -2116,17 +2262,10 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    themeToggle.addEventListener('click', () => {
+      themeToggle.addEventListener('click', () => {
       lightMode = !lightMode;
-      if (lightMode) {
-        document.documentElement.style.setProperty('--text', '#122926');
-        document.documentElement.style.setProperty('--muted', '#496e64');
-        document.documentElement.style.setProperty('--muted-2', '#5e847a');
-        document.body.style.background = 'linear-gradient(120deg, #effdf8 0%, #dff8ef 55%, #f5fffb 100%)';
-        showToast('Light mode enabled.');
-      } else {
-        window.location.reload();
-      }
+      document.body.classList.toggle('light-mode', lightMode);
+      showToast(lightMode ? 'Light mode enabled.' : 'Dark mode enabled.');
     });
 
     adminBtn.addEventListener('click', async () => {
