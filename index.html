@@ -2258,23 +2258,28 @@ body {
 
     counters.forEach(counter => counterObserver.observe(counter));
 
-    window.addEventListener('scroll', () => {
-      backTop.classList.toggle('show', window.scrollY > 500);
+ window.addEventListener('scroll', () => {
+  backTop.classList.toggle('show', window.scrollY > 500);
 
-      const sections = [...document.querySelectorAll('main section, header.hero')];
-      const links = [...document.querySelectorAll('.nav-links a')];
-      let current = 'home';
+  const sections = [...document.querySelectorAll('header.hero, main section')];
+  const links = [...document.querySelectorAll('.nav-links a')];
 
-      sections.forEach(section => {
-        const top = section.offsetTop - 130;
-        if (window.scrollY >= top) current = section.id || current;
-      });
+  let current = 'home';
+  const scrollMiddle = window.scrollY + window.innerHeight * 0.35;
 
-      links.forEach(link => {
-        link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
-      });
-    });
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionBottom = sectionTop + section.offsetHeight;
 
+    if (scrollMiddle >= sectionTop && scrollMiddle < sectionBottom) {
+      current = section.id || 'home';
+    }
+  });
+
+  links.forEach(link => {
+    link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+  });
+});
     backTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
@@ -2426,20 +2431,17 @@ document.addEventListener('mousemove', e => {
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', e => {
     const target = link.getAttribute('href');
-
     if (!target.startsWith('#')) return;
 
     e.preventDefault();
 
-    document.body.style.opacity = '0';
-    document.body.style.transform = 'scale(.985)';
+    document.querySelector(target)?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
 
-    setTimeout(() => {
-      document.querySelector(target)?.scrollIntoView({ behavior: 'smooth' });
-
-      document.body.style.opacity = '1';
-      document.body.style.transform = 'scale(1)';
-    }, 180);
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    link.classList.add('active');
   });
 });
 
