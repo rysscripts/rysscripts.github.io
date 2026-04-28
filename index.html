@@ -1289,6 +1289,37 @@ body {
   height: 72px;
   transform: translate(-50%, -50%);
 }
+    .featured-card {
+  border-color: rgba(141,240,209,0.42);
+  box-shadow:
+    0 35px 90px rgba(0,0,0,0.6),
+    0 0 70px rgba(70,199,160,0.2);
+  background:
+    radial-gradient(circle at top right, rgba(141,240,209,0.16), transparent 34%),
+    linear-gradient(180deg, rgba(6,18,42,0.96), rgba(4,12,30,0.98));
+}
+
+.featured-ribbon {
+  position: absolute;
+  top: 20px;
+  right: -46px;
+  transform: rotate(35deg);
+  background: linear-gradient(90deg, #8df0d1, #46c7a0);
+  color: #06110f;
+  font-size: .72rem;
+  font-weight: 900;
+  padding: 8px 54px;
+  letter-spacing: .08em;
+  z-index: 5;
+}
+
+@media (max-width: 640px) {
+  .featured-ribbon {
+    top: 16px;
+    right: -54px;
+    font-size: .65rem;
+  }
+}
   </style>
 </head>
 <body>
@@ -1460,6 +1491,45 @@ body {
   </header>
 
   <main class="wrap">
+    <section class="reveal" id="featured-script">
+  <div class="section-head">
+    <h2><span style="color: var(--primary-3);">Featured</span> Script</h2>
+    <div class="line"></div>
+  </div>
+
+  <article class="card glass spotlight featured-card" id="featuredCard">
+    <div class="featured-ribbon">TOP SCRIPT</div>
+
+    <div class="top-row">
+      <div class="app-icon">
+        <img id="featuredImage" src="images/bladeball.png" alt="Featured Script">
+      </div>
+      <span class="pill">🔥 MOST COPIED</span>
+    </div>
+
+    <div class="status"><span class="dot"></span> Trending Now</div>
+    <h3 id="featuredTitle">Loading...</h3>
+
+    <div class="badge-row">
+      <span class="badge version">Auto Pick</span>
+      <span class="badge">Supabase Stats</span>
+      <span class="badge">Live</span>
+    </div>
+
+    <div class="script-meta">
+      <span id="featuredCopies">📋 0 copies</span>
+      <span>⭐ Community Favorite</span>
+    </div>
+
+    <div class="code" id="featuredCode">Loading top script...</div>
+
+    <div class="btn-row">
+      <button class="btn copy-btn" id="featuredCopyBtn" data-script-name="" data-copy="">
+        Copy Featured Script
+      </button>
+    </div>
+  </article>
+</section>
     <section class="reveal" id="latest-scripts">
       <div class="section-head">
         <h2><span style="color: var(--primary-3);">Latest</span> Scripts</h2>
@@ -2002,7 +2072,63 @@ body {
         adminStatusText.textContent = `Dashboard load failed: ${error.message}`;
       }
     }
+const SCRIPT_DATA = {
+  'MM2 Script': {
+    image: 'images/mm2.png',
+    copy: "loadstring(game:HttpGet('https://raw.githubusercontent.com/rysscripts/mm2/refs/heads/main/loader.lua'))()"
+  },
+  'Adopt Me Script': {
+    image: 'images/adoptme.png',
+    copy: "loadstring(game:HttpGet('https://raw.githubusercontent.com/rysscripts/adoptme/refs/heads/main/loader.lua'))()"
+  },
+  'Steal A Brainrot Script': {
+    image: 'images/brainrot.png',
+    copy: "loadstring(game:HttpGet('https://raw.githubusercontent.com/rysscripts/stealabrainrot/refs/heads/main/loader.lua'))()"
+  },
+  'Blade Ball Script': {
+    image: 'images/bladeball.png',
+    copy: "loadstring(game:HttpGet('https://pastefy.app/IC9lSYdF/raw'))()"
+  },
+  'Pet Simulator 99 Script': {
+    image: 'images/ps99.png',
+    copy: 'Pet Simulator 99 Script is currently in development.'
+  }
+};
 
+async function loadFeaturedScript() {
+  if (!supabaseClient) return;
+
+  const { data: events, error } = await supabaseClient
+    .from('site_events')
+    .select('script_name')
+    .eq('event_type', 'copy');
+
+  if (error || !events) return;
+
+  const counts = {};
+
+  events.forEach(event => {
+    if (!event.script_name) return;
+    counts[event.script_name] = (counts[event.script_name] || 0) + 1;
+  });
+
+  const top = Object.entries(counts).sort((a, b) => b[1] - a[1])[0];
+
+  const topName = top ? top[0] : 'Blade Ball Script';
+  const topCopies = top ? top[1] : 0;
+  const script = SCRIPT_DATA[topName];
+
+  if (!script) return;
+
+  document.getElementById('featuredTitle').textContent = topName;
+  document.getElementById('featuredImage').src = script.image;
+  document.getElementById('featuredCopies').textContent = `📋 ${topCopies} copies`;
+  document.getElementById('featuredCode').textContent = script.copy;
+
+  const btn = document.getElementById('featuredCopyBtn');
+  btn.dataset.scriptName = topName;
+  btn.dataset.copy = script.copy;
+}
     async function refreshAuthState() {
       if (!supabaseClient) return;
 
