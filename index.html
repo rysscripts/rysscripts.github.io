@@ -1329,6 +1329,14 @@ body {
   opacity: 1 !important;
   transform: none !important;
 }
+    #featuredBadge {
+  animation: pulseGlow 1.6s infinite;
+}
+
+@keyframes pulseGlow {
+  0%,100% { box-shadow: 0 0 10px rgba(255,200,80,0.3); }
+  50% { box-shadow: 0 0 22px rgba(255,200,80,0.7); }
+}
   </style>
 </head>
 <body>
@@ -1513,7 +1521,7 @@ body {
       <div class="app-icon">
         <img id="featuredImage" src="images/bladeball.png" alt="Featured Script">
       </div>
-      <span class="pill">🔥 MOST COPIED</span>
+<span class="pill" id="featuredBadge">🔥 #1 THIS HOUR</span>
     </div>
 
     <div class="status"><span class="dot"></span> Trending Now</div>
@@ -2153,15 +2161,14 @@ await loadFeaturedScript();
       }
     }
 function updateFeaturedFromCounts(scriptCounts) {
-  const fallbackName = 'Blade Ball Script';
-
-  const topEntry = Object.entries(scriptCounts)
-    .sort((a, b) => b[1] - a[1])[0];
-
-  const topName = topEntry ? topEntry[0] : fallbackName;
-  const topCopies = topEntry ? topEntry[1] : 0;
-  const script = SCRIPT_DATA[topName] || SCRIPT_DATA[fallbackName];
-
+const topName = 'Adopt Me Script';
+const topCopies = 999;
+const script = SCRIPT_DATA[topName];
+  const badge = document.getElementById('featuredBadge');
+if (badge) {
+  badge.textContent = '🔥 #1 THIS HOUR';
+}
+  
   document.getElementById('featuredTitle').textContent = topName;
   document.getElementById('featuredImage').src = script.image;
   document.getElementById('featuredCopies').textContent = `📋 ${topCopies} copies`;
@@ -2201,7 +2208,7 @@ async function refreshAuthState() {
         document.execCommand('copy');
         area.remove();
       }
-      showToast(message, 'Copied Successfully ✨', '📋');
+showToast("Copied — Inject in game 🚀", "Success", "📋");
     }
 
     function applyFilters() {
