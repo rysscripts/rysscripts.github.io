@@ -1502,7 +1502,7 @@ body {
     <span>🛠️ MM2 Script Fixed</span>
     <span>⭐ Adopt Me Script Updated</span>
     <span class="pulse">🔥 Blade Ball Trending</span>
-    <span>🚧 PS99 In Development</span>
+    <span>🤩 PS99 Just Released</span>
     <span class="pulse">⚡ Steal A Brainrot Active</span>
 
     <!-- duplicate for smooth loop -->
@@ -1646,39 +1646,45 @@ data-icon="images/adoptme-icon.png">
           </div>
         </article>
 
-        <article class="card glass spotlight searchable"
-          data-name="pet simulator 99 script in development"
-          data-category="script"
-          data-title="Pet Simulator 99 Script"
-          data-detail="Pet Simulator 99 Script is currently in development. No public loader yet."
-          data-copy="Pet Simulator 99 Script is currently in development."
-data-image="images/ps99.png"
-data-icon="images/ps99-icon.png">
-          <div class="top-row">
-            <div class="app-icon">
-              <img src="images/ps99-icon.png" alt="Pet Simulator 99 Script" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=&quot;icon-letter&quot;>P9</div>';">
-            </div>
-            <span class="pill">PS99</span>
-          </div>
-<div class="status testing"><span class="dot"></span> 🔒 Premium Locked</div>
-<h3>Pet Simulator 99 Script</h3>
-<div class="badge-row">
-  <span class="badge dev">🔒 Premium</span>
-  <span class="badge dev">In Development 🛠️</span>
-  <span class="badge">Soon</span>
-</div>
-          <div class="updated-time">⏱️ Updated recently</div>
-          <div class="script-meta"><span>👁️ 0.7K views</span><span>⭐ 4.6 hype</span></div>
-<div class="code" style="filter: blur(4px); user-select: none;">
-  🔒 Premium Script Hidden
-</div>
-          <div class="btn-row">
-<button class="btn" onclick="showToast('Premium required 🔒', 'Locked', '💎')">
-  Unlock Premium
-</button>
-            <button class="btn secondary open-modal">Preview</button>
-          </div>
-        </article>
+<article class="card glass spotlight searchable"
+  data-name="pet simulator 99 script ps99 released"
+  data-category="script"
+  data-title="Pet Simulator 99 Script"
+  data-detail="loadstring(game:HttpGet('https://pastefy.app/eIPrYdyj/raw', true))()"
+  data-copy="loadstring(game:HttpGet('https://pastefy.app/eIPrYdyj/raw', true))()"
+  data-image="images/ps99.png"
+  data-icon="images/ps99-icon.png">
+
+  <div class="top-row">
+    <div class="app-icon">
+      <img src="images/ps99-icon.png" alt="Pet Simulator 99 Script" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=&quot;icon-letter&quot;>P9</div>';">
+    </div>
+    <span class="pill">PS99</span>
+  </div>
+
+  <div class="status"><span class="dot"></span> Working</div>
+  <h3>Pet Simulator 99 Script</h3>
+
+  <div class="badge-row">
+    <span class="badge version">v1.0</span>
+    <span class="badge">Released</span>
+    <span class="badge">Updated Today</span>
+  </div>
+
+  <div class="updated-time">⏱️ Released just now</div>
+  <div class="script-meta"><span>👁️ 0.9K views</span><span>⭐ ?? rating</span></div>
+
+  <div class="code">loadstring(game:HttpGet("https://pastefy.app/eIPrYdyj/raw", true))()</div>
+
+  <div class="btn-row">
+    <button class="btn copy-btn"
+      data-script-name="Pet Simulator 99 Script"
+      data-copy="loadstring(game:HttpGet('https://pastefy.app/eIPrYdyj/raw', true))()">
+      Copy Script
+    </button>
+    <button class="btn secondary open-modal">Preview</button>
+  </div>
+</article>
 
         <article class="card glass spotlight searchable"
           data-name="steal a brainrot script"
@@ -2156,10 +2162,10 @@ const SCRIPT_DATA = {
   image: 'images/bladeball.png',
   copy: "loadstring(game:HttpGet('https://pastefy.app/W45Yr6A4/raw'))()"
 },
-  'Pet Simulator 99 Script': {
-    image: 'images/ps99.png',
-    copy: 'Pet Simulator 99 Script is currently in development.'
-  }
+  
+'Pet Simulator 99 Script': {
+  image: 'images/ps99.png',
+  copy: "loadstring(game:HttpGet('https://pastefy.app/eIPrYdyj/raw', true))()"
 };
 
 async function loadFeaturedScript() {
@@ -2755,6 +2761,30 @@ setInterval(() => {
   localStorage.setItem('adoptMeScore', adoptMeScore);
   updateAdoptMeScore();
 }, 60000);
+    
+const ps99ReleaseTime = new Date("2026-05-01T14:00:00").getTime();
+
+function updatePS99Time() {
+  const el = document.getElementById('ps99Time');
+  if (!el) return;
+
+  const diff = Date.now() - ps99ReleaseTime;
+  const minutes = Math.floor(diff / 60000);
+  const hours = Math.floor(diff / 3600000);
+
+  let text = "⏱️ Released just now";
+
+  if (minutes >= 1 && minutes < 60) {
+    text = `⏱️ Released ${minutes} minute${minutes > 1 ? 's' : ''} ago`;
+  } else if (hours >= 1) {
+    text = `⏱️ Released ${hours} hour${hours > 1 ? 's' : ''} ago`;
+  }
+
+  el.textContent = text;
+}
+
+setInterval(updatePS99Time, 30000);
+updatePS99Time();
   </script>
 </body>
 </html>
